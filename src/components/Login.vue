@@ -6,24 +6,29 @@
         <img src="../assets/logo.png" alt />
       </div>
       <!-- 表单区域 -->
-      <el-form label-width="0px" class="login_form">
+      <el-form
+        ref="loginFormRef"
+        :model="loginForm"
+        label-width="0px"
+        :rules="loginFormRules"
+        class="login_form">
         <!-- 用户名 -->
-        <el-form-item>
+        <el-form-item label="账号" prop="username">
           <el-input
-            prefix-icon="iconfont icon-user"
-          ></el-input>
+            v-model="loginForm.username"
+            prefix-icon="iconfont icon-user"></el-input>
         </el-form-item>
         <!-- 密码 -->
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input
-            prefix-icon="iconfont icon-3702mima"
-          ></el-input>
+            type="password"
+            v-model="loginForm.password"
+            prefix-icon="iconfont icon-3702mima"></el-input>
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
           <el-button type="primary">登录</el-button>
-          <el-button type="info">重制</el-button>
-
+          <el-button type="info" @click="resetLoginForm">重制</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -31,7 +36,35 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      // 登录表单的数据绑定对象
+      loginForm: {
+        username: '',
+        password: ''
+      },
+      // 表单验证
+      loginFormRules: {
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入用户密码', trigger: 'blur' },
+          { min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  methods: {
+    // 点击重制
+    resetLoginForm () {
+    //   console.log(this)
+      this.$refs.loginFormRef.resetFields()
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>
@@ -68,14 +101,14 @@ export default {}
   }
 }
 .login_form {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 .btns {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
