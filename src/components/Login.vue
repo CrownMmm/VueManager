@@ -68,13 +68,13 @@ export default {
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return
         const { data: res } = await this.$http.post('login', this.loginForm)
-        console.log(res)
+        // console.log(res)
         if (res.meta.status !== 200) return this.$message.error('登录失败')
         this.$message.success('登录成功')
         // 1、将登陆成功之后的token, 保存到客户端的sessionStorage中; localStorage中是持久化的保存
         //   1.1 项目中出现了登录之外的其他API接口，必须在登陆之后才能访问
         //   1.2 token 只应在当前网站打开期间生效，所以将token保存在sessionStorage中
-        console.log(res)
+        // console.log(res)
         window.sessionStorage.setItem('token', res.data.token)
         // 2、通过编程式导航跳转到后台主页, 路由地址为：/home
         this.$router.push('/home')
