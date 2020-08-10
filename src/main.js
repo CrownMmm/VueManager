@@ -15,6 +15,8 @@ import axios from 'axios'
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 // 配置请求路径
+
+// http://timemeetyou.com:8889/api/private/v1/  http://127.0.0.1:8888/api/private/v1/
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 axios.interceptors.request.use(config => {
 //   console.log(config)
