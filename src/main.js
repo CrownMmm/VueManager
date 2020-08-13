@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
-
 import './plugins/element.js'
 // 导入全局样式
 import './assets/css/global.css'
@@ -11,6 +10,12 @@ import './assets/fonts/iconfont.css'
 // 导入表格树
 import TreeTable from 'vue-table-with-tree-grid'
 
+// 导入富文本编辑器
+import VueQuillEditor from 'vue-quill-editor'
+// 导入富文本编辑器样式
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 import axios from 'axios'
 
 Vue.filter('dateFormat', function (originVal) {
@@ -26,7 +31,8 @@ Vue.filter('dateFormat', function (originVal) {
   // yyyy-mm-dd hh:mm:ss
   return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
 })
-
+// 全局注册富文本编辑器
+Vue.use(VueQuillEditor)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 // 配置请求路径
