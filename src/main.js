@@ -18,6 +18,27 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import axios from 'axios'
 
+// 导入NProgress, 包对应的JS和CSS
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+// 配置请求路径
+// http://timemeetyou.com:8889/api/private/v1/  http://127.0.0.1:8888/api/private/v1/
+axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+// 在request拦截器中 展示进度条  Nprogress.start()
+axios.interceptors.request.use(config => {
+  NProgress.start()
+  // console.log(config)
+  // 为请求头对象，添加token验证的Authorization字段
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  // 在最后必须 return config
+  return config
+})
+// response 拦截器中,  隐藏进度条NProgress.done()
+axios.interceptors.response.use(config => {
+  NProgress.done()
+  return config
+})
 Vue.filter('dateFormat', function (originVal) {
   const dt = new Date(originVal)
 
@@ -35,16 +56,7 @@ Vue.filter('dateFormat', function (originVal) {
 Vue.use(VueQuillEditor)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
-// 配置请求路径
 
-// http://timemeetyou.com:8889/api/private/v1/  http://127.0.0.1:8888/api/private/v1/
-axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
-axios.interceptors.request.use(config => {
-//   console.log(config)
-  config.headers.Authorization = window.sessionStorage.getItem('token')
-  //   在最后需要return config
-  return config
-})
 Vue.component('tree-table', TreeTable)
 
 new Vue({

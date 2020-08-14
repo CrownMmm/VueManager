@@ -143,7 +143,7 @@ export default {
       }
       this.total = res.data.total
       this.orderList = res.data.goods
-      console.log(res)
+    //   console.log(res)
     },
     // 分页
     handleSizeChange (newSize) {
@@ -169,7 +169,7 @@ export default {
       }
       this.progressInfo = res.data
       this.progressVisible = true
-      console.log(this.progressInfo)
+    //   console.log(this.progressInfo)
     }
   }
 }

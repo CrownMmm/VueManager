@@ -230,7 +230,7 @@ export default {
       }
 
       this.cateList = res.data
-      console.log(this.catelist)
+    //   console.log(this.catelist)
     },
     // 级联选择框选中项变化 会触发
     handleChange () {
@@ -264,7 +264,7 @@ export default {
       if (res.meta.status !== 200) {
         return this.$message.error('获取参数列表失败')
       }
-      console.log(res.data)
+      //   console.log(res.data)
       res.data.forEach((item) => {
         item.attr_vals = item.attr_vals ? item.attr_vals.split(' ') : []
         // 控制文本框的显式与隐藏

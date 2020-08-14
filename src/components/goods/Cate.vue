@@ -177,12 +177,12 @@ export default {
       if (res.meta.status !== 200) {
         return this.$message.error('获取商品分类失败')
       }
-      console.log(res.data)
+      //   console.log(res.data)
       //   把数据列表赋值给catelist
       this.catelist = res.data.result
       //   为总数据条数赋值
       this.total = res.data.total
-      console.log(this.catelist)
+    //   console.log(this.catelist)
     },
     // 监听pagesize改变
     handleSizeChange (newSize) {

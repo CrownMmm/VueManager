@@ -299,7 +299,7 @@ export default {
         return this.$message.error('查询用户信息失败')
       }
       this.editForm = res.data
-      console.log(this.editForm)
+      //   console.log(this.editForm)
       this.editDialogVisible = true
     },
     // 修改用户信息并提交
@@ -356,7 +356,7 @@ export default {
         return this.$message.error('获取角色列表失败')
       }
       this.rolesList = res.data
-      console.log(this.rolesList)
+      //   console.log(this.rolesList)
       this.setRoleDialogVisible = true
     },
     // 点击按钮分配角色

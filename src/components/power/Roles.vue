@@ -312,7 +312,7 @@ export default {
       }
       // 把获取到的权限数据保存到data中
       this.rightslist = res.data
-      console.log(this.rightslist)
+      //   console.log(this.rightslist)
       // 递归获取三级节点id
       this.getLeafKeys(role, this.defKeys)
       this.setRightDialogVisible = true
@@ -338,7 +338,7 @@ export default {
         ...this.$refs.treeRef.getHalfCheckedKeys()
       ]
       const idStr = keys.join(',')
-      console.log(idStr)
+      //   console.log(idStr)
       const { data: res } = await this.$http.post(`roles/${this.roleId}/rights`, {
         rids: idStr
       })

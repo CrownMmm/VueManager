@@ -224,7 +224,7 @@ export default {
     // 处理图片预览效果
     handlePreview (file) {
       this.previewPath = file.response.data.url
-      console.log(file)
+      //   console.log(file)
       this.previewVisible = true
     },
     // 处理移除图片的操作
